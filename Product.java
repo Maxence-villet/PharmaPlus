@@ -1,6 +1,7 @@
 import java.io.Serializable;
 
-public class Product implements Serializable {
+public class Product implements Serializable, Stockable {
+    private static final long serialVersionUID = 1L;
     private int id;
     private String name;
     private double price;
@@ -10,6 +11,9 @@ public class Product implements Serializable {
 
     public Product(int id, String name, double price, int stockQuantity,
                    String description, String category) {
+        if (!isValidPrice(price) || !isValidQuantity(stockQuantity)) {
+            throw new IllegalArgumentException("❌ Price or quantity invalid");
+        }
         this.id = id;
         this.name = name;
         this.price = price;
@@ -18,7 +22,25 @@ public class Product implements Serializable {
         this.category = category;
     }
 
-    // Getters & Setters
+    // Interface Stockable implementation
+    @Override
+    public boolean isValidPrice(double price) {
+        return price > 0;
+    }
+
+    @Override
+    public boolean isValidQuantity(int quantity) {
+        return quantity >= 0;
+    }
+
+    @Override
+    public void updateStock(int quantity) {
+        if (isValidQuantity(quantity)) {
+            this.stockQuantity = quantity;
+        }
+    }
+
+    // Getters and setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
@@ -39,7 +61,7 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("%s (ID: %d) - Price: €%.2f, Stock: %d",
+        return String.format("%s (ID: %d) - Price: %.2f€, Stock: %d",
                 name, id, price, stockQuantity);
     }
 }
