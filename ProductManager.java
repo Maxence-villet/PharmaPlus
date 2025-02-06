@@ -1,11 +1,17 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
 
 public class ProductManager {
     private static int nextId = 1;
     private Scanner scanner;
+    private List<Product> products;
 
     public ProductManager() {
         scanner = new Scanner(System.in);
+        products = new ArrayList<>();
     }
 
     public Product addNewProduct() {
@@ -37,6 +43,24 @@ public class ProductManager {
         } catch (IllegalArgumentException e) {
             System.out.println("❌ Error creating product: " + e.getMessage());
             return null;
+        }
+    }
+
+    public void displayProducts() {
+        if (products.isEmpty()) {
+            System.out.println("No products available.");
+            return;
+        }
+
+        // Trier les produits par nom
+        Collections.sort(products, Comparator.comparing(Product::getName));
+
+        System.out.println("\n=== List of Available Products ===");
+        for (Product product : products) {
+            System.out.println("Name: " + product.getName() +
+                    ", Price: " + product.getPrice() + "€" +
+                    ", Quantity: " + product.getQuantity() +
+                    ", Category: " + product.getCategory());
         }
     }
 
