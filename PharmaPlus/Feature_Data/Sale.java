@@ -1,3 +1,5 @@
+package PharmaPlus.Feature_Data;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -14,7 +16,6 @@ public class Sale implements Serializable {
         this.totalPrice = product.getPrice() * quantity;
     }
 
-    // Getters
     public Product getProduct() { return product; }
     public int getQuantity() { return quantity; }
     public LocalDateTime getSaleDate() { return saleDate; }

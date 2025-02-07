@@ -1,3 +1,5 @@
+package PharmaPlus.Feature_Data;
+
 import java.io.Serializable;
 
 public class Product implements Serializable, Stockable {
@@ -22,7 +24,6 @@ public class Product implements Serializable, Stockable {
         this.category = category;
     }
 
-    // Interface Stockable implementation
     @Override
     public boolean isValidPrice(double price) {
         return price > 0;
@@ -40,7 +41,6 @@ public class Product implements Serializable, Stockable {
         }
     }
 
-    // Getters and setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
