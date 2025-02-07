@@ -1,3 +1,5 @@
+package PharmaPlus.Feature_User;
+
 import java.util.List;
 
 public class AdminRole implements Role {

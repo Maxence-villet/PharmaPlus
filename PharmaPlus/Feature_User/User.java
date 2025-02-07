@@ -1,7 +1,4 @@
-public interface Role {
-    String getRoleName();
-    void performRoleAction();
-}
+package PharmaPlus.Feature_User;
 
 public class User {
     private String username;
