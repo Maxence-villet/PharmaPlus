@@ -1,5 +1,8 @@
+package PharmaPlus.Feature_Commande;
+
+import PharmaPlus.Feature_Data.Product;
+
 public class OrderItem {
-    // Composition with Product: assume Product class exists.
     private Product product;
     private int quantity;
 

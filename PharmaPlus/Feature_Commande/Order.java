@@ -1,8 +1,9 @@
+package PharmaPlus.Feature_Commande;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
 
 public abstract class Order {
     protected String orderId;
@@ -31,8 +32,6 @@ public abstract class Order {
         return orderDate;
     }
 
-    // Abstract method to validate stock availability. Different order types
-    // may have different validations (for example, urgent orders might be handled differently).
     public abstract boolean validateStock(Map<Integer, Integer> stockOrderItem);
 
     @Override
