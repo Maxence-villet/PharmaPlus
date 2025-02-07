@@ -6,16 +6,19 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
+
 import Feature_Data.Product;
+import Feature_Data.PharmacyManager;
 
 public class ProductManager {
     private static int nextId = 1;
     private Scanner scanner;
     private List<Product> products;
 
-    public ProductManager() {
+    public ProductManager(List<Product> productsLoad) {
         scanner = new Scanner(System.in);
         products = new ArrayList<>();
+        products = productsLoad;
     }
 
     public Product addNewProduct() {
@@ -42,8 +45,9 @@ public class ProductManager {
                     description,
                     category
             );
-            products.add(newProduct);
+            // products.add(newProduct);
             System.out.println("✅ Product successfully added: " + newProduct);
+            
             return newProduct;
         } catch (IllegalArgumentException e) {
             System.out.println("❌ Error creating product: " + e.getMessage());
@@ -56,6 +60,7 @@ public class ProductManager {
             System.out.println("No products available.");
             return;
         }
+
 
         Collections.sort(products, Comparator.comparing(Product::getName));
 

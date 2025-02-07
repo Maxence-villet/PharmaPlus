@@ -3,6 +3,8 @@ import Feature_Inventaire.LowStock;
 import Feature_Inventaire.ProductManager;
 import Feature_Inventaire.ProductSearch;
 import Feature_Data.Product;
+import Feature_Data.PharmacyManager;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,9 +13,14 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ProductManager productManager = new ProductManager();
         DeleteProduct deleteProduct = new DeleteProduct();
         List<Product> products = new ArrayList<>();
+        PharmacyManager pharmacyManager = new PharmacyManager();
+
+        products = pharmacyManager.getProducts();
+        ProductManager productManager = new ProductManager(products);
+
+
 
         while (true) {
             System.out.println("\n=== PharmaPlus Management System ===");
@@ -33,7 +40,7 @@ public class Main {
                     // Ajouter un nouveau produit
                     Product newProduct = productManager.addNewProduct();
                     if (newProduct != null) {
-                        products.add(newProduct);
+                        pharmacyManager.addProduct(newProduct);
                     }
                     break;
 
