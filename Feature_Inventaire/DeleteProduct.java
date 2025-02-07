@@ -1,8 +1,9 @@
-package PharmaPlus.Feature_Inventaire;
+package Feature_Inventaire;
 
 import java.util.List;
 import java.util.Scanner;
-import PharmaPlus.Feature_Data.Product;
+
+import Feature_Data.Product;
 
 public class DeleteProduct {
 

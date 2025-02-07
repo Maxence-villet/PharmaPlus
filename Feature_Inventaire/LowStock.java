@@ -1,7 +1,8 @@
-package PharmaPlus.Feature_Inventaire;
+package Feature_Inventaire;
 
 import java.util.List;
-import PharmaPlus.Feature_Data.Product;
+
+import Feature_Data.Product;
 
 public class LowStock {
 

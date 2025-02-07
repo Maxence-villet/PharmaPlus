@@ -1,4 +1,4 @@
-package PharmaPlus.Feature_User;
+package Feature_User;
 
 public class User {
     private String username;

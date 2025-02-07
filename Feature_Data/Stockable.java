@@ -1,4 +1,4 @@
-package PharmaPlus.Feature_Data;
+package Feature_Data;
 
 public interface Stockable {
     boolean isValidPrice(double price);

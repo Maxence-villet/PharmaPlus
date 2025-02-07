@@ -1,6 +1,6 @@
-package PharmaPlus.Feature_Commande;
+package Feature_Commande;
 
-import PharmaPlus.Feature_Data.Product;
+import Feature_Data.Product;
 
 public class OrderItem {
     private Product product;

@@ -1,4 +1,4 @@
-package PharmaPlus.Feature_Data;
+package Feature_Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
