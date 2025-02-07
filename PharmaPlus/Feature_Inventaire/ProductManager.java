@@ -1,8 +1,11 @@
+package PharmaPlus.Feature_Inventaire;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import PharmaPlus.Feature_Data.Product;
 
 public class ProductManager {
     private static int nextId = 1;
@@ -38,6 +41,7 @@ public class ProductManager {
                     description,
                     category
             );
+            products.add(newProduct);
             System.out.println("✅ Product successfully added: " + newProduct);
             return newProduct;
         } catch (IllegalArgumentException e) {
@@ -52,14 +56,13 @@ public class ProductManager {
             return;
         }
 
-        // Trier les produits par nom
         Collections.sort(products, Comparator.comparing(Product::getName));
 
         System.out.println("\n=== List of Available Products ===");
         for (Product product : products) {
             System.out.println("Name: " + product.getName() +
                     ", Price: " + product.getPrice() + "€" +
-                    ", Quantity: " + product.getQuantity() +
+                    ", Quantity: " + product.getStockQuantity() +
                     ", Category: " + product.getCategory());
         }
     }
@@ -91,6 +94,34 @@ public class ProductManager {
             } catch (NumberFormatException e) {
                 System.out.println("❌ Please enter a valid integer");
             }
+        }
+    }
+
+    public void deleteProduct() {
+        System.out.print("Enter product name to delete: ");
+        String productName = scanner.nextLine();
+
+        Product productToDelete = null;
+        for (Product product : products) {
+            if (product.getName().equalsIgnoreCase(productName)) {
+                productToDelete = product;
+                break;
+            }
+        }
+
+        if (productToDelete == null) {
+            System.out.println("Product not found: " + productName);
+            return;
+        }
+
+        System.out.print("Are you sure you want to delete '" + productToDelete.getName() + "'? (yes/no): ");
+        String response = scanner.nextLine().trim().toLowerCase();
+
+        if (response.equals("yes")) {
+            products.remove(productToDelete);
+            System.out.println("Product deleted: " + productToDelete.getName());
+        } else {
+            System.out.println("Deletion cancelled.");
         }
     }
 }
