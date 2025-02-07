@@ -22,9 +22,9 @@ public class ProductSearch {
 
         if (index != -1) {
             Product foundProduct = products.get(index);
-            System.out.println("Produit trouvé : " + foundProduct.getName() + " | Stock: " + foundProduct.getStockQuantity());
+            System.out.println("Product found: " + foundProduct.getName() + " | Stock: " + foundProduct.getStockQuantity());
         } else {
-            System.out.println("Produit \"" + productName + "\" introuvable dans l'inventaire.");
+            System.out.println("Product \"" + productName + "\" not found in inventory.");
         }
     }
 
